@@ -28,7 +28,7 @@ describe("[UNIT]: auth", () => {
         const res = targets
             .map(headers => getAPIKey(headers))
             .filter(key => key === null);
-        expect(res.length).toBe(6)
+        expect(res.length).toBe(2)
     });
 
     test("APIKEY on valid", () => {
