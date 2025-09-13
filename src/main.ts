@@ -17,7 +17,7 @@ if (!config.api.port) {
 
 const app = express();
 app.use(express.json());
-app.use(consoleLogger)
+app.use(consoleLogger);
 
 app.use(
   cors({
