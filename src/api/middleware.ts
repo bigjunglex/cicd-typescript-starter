@@ -29,10 +29,9 @@ export function middlewareAuth(
   };
 }
 
-
 export function consoleLogger(req: Request, res: Response, next: NextFunction) {
-  const {address, port} = req.socket.address() as AddressInfo
-  const mtd = req.method
-  console.log(`TO:[${req.url}]\nMETHOD: ${mtd}\nFROM:${address}:${port}`)
-  next()
+  const { address, port } = req.socket.address() as AddressInfo;
+  const mtd = req.method;
+  console.log(`TO:[${req.url}]\nMETHOD: ${mtd}\nFROM:${address}:${port}`);
+  next();
 }
