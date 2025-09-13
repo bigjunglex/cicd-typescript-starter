@@ -3,7 +3,7 @@ import cors from "cors";
 import path from "path";
 import { config } from "./config.js";
 import { db } from "./db/index.js";
-import { middlewareAuth } from "./api/middleware.js";
+import { consoleLogger, middlewareAuth } from "./api/middleware.js";
 import { handlerReadiness } from "./api/readiness.js";
 import { handlerNotesCreate, handlerNotesGet } from "./api/notes.js";
 import { handlerUsersCreate, handlerUsersGet } from "./api/users.js";
@@ -17,6 +17,7 @@ if (!config.api.port) {
 
 const app = express();
 app.use(express.json());
+app.use(consoleLogger)
 
 app.use(
   cors({

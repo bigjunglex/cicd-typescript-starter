@@ -1,8 +1,9 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { respondWithError } from "./json.js";
 import { getUser } from "../db/queries/users.js";
 import { User } from "../db/schema.js";
 import { getAPIKey } from "./auth.js";
+import { AddressInfo } from "node:net";
 
 export function middlewareAuth(
   handler: (req: Request, res: Response, user: User) => void,
@@ -26,4 +27,12 @@ export function middlewareAuth(
       respondWithError(res, 500, "Couldn't authenticate user", err);
     }
   };
+}
+
+
+export function consoleLogger(req: Request, res: Response, next: NextFunction) {
+  const {address, port} = req.socket.address() as AddressInfo
+  const mtd = req.method
+  console.log(`TO:[${req.url}]\nMETHOD: ${mtd}\nFROM:${address}:${port}`)
+  next()
 }
