@@ -25,7 +25,7 @@ jobs:
         run: npm run test -- --coverage
 
   style:
-    name: Styles
+    name: Style
     runs-on: ubuntu-latest
 
     steps:
@@ -42,3 +42,6 @@ jobs:
 
       - name: Run prettier
         run: npm run format:check
+
+      - name: Run eslint
+        run: npm run lint -- --max-warnings=0

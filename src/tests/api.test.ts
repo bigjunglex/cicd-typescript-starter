@@ -2,7 +2,6 @@ import { describe, expect, test } from "vitest";
 import { getAPIKey } from "src/api/auth";
 import { IncomingHttpHeaders } from "http";
 import { v4 } from "uuid";
-import { isNull } from "drizzle-orm";
 
 describe("[UNIT]: auth", () => {
   const valid: IncomingHttpHeaders = {
