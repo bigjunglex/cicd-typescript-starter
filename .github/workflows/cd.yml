@@ -1,0 +1,23 @@
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+  
+    steps: 
+      - name: code
+        uses: actions/checkout@v4
+      
+      - name: node
+        uses: actions/setup-node@v4
+        with: 
+          node-version: 22
+
+      - name: install 
+        run: npm ci
+
+      - name: build
+        run: npm run build
